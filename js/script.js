@@ -9,6 +9,17 @@ var dbData;
   });
 
 window.onload  = function() {  
+  
+    square_speed = prompt("Set square speed");
+    var ToDBData;
+    $.ajax({
+      url: 'sendData.php',
+      type: 'POST',
+      data: {ajax: true, name: 'square_speed', value: square_speed},
+      success: function (result) {
+        ToDBData = JSON.parse(result);
+      }
+    });
 
     var playButton = document.getElementById('playButton');
     playButton.addEventListener('click', function(e){
